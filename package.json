@@ -1,0 +1,40 @@
+{
+  "name": "playpath-sdk",
+  "version": "1.0.0",
+  "description": "JavaScript SDK for interacting with PlayPath RAG and Items APIs",
+  "main": "playpath-sdk.js",
+  "types": "playpath-sdk.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "playpath",
+    "rag",
+    "api",
+    "sdk",
+    "javascript",
+    "coaching",
+    "sports",
+    "assistant"
+  ],
+  "author": "PlayPath",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/playpath"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browser": {
+    "fetch": false
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "files": [
+    "playpath-sdk.js",
+    "playpath-sdk.d.ts",
+    "README.md",
+    "examples/"
+  ]
+}

@@ -108,6 +108,33 @@ class PlayPathSDK {
     });
   }
 
+/**
+   * Stream chat messages via Server-Sent Events (SSE)
+   * @param {Object} params - Chat parameters
+   * @param {string} params.message - The message to send (required)
+   * @param {Array} [params.history] - Chat history array
+   * @param {string} [params.system_prompt] - Custom system prompt
+   * @returns {EventSource} An EventSource instance for streaming responses
+   */
+  ragChatStream(params) {
+    if (!params.message) {
+      throw new PlayPathError('Message is required', 400);
+    }
+    const queryParams = {
+      message: params.message
+    };
+    if (params.history) {
+      queryParams.history = JSON.stringify(params.history);
+    }
+    if (params.system_prompt) {
+      queryParams.system_prompt = params.system_prompt;
+    }
+    if (this.apiKey) {
+      queryParams.api_key = this.apiKey;
+    }
+    const url = `${this.baseUrl}/api/rag/stream?${new URLSearchParams(queryParams).toString()}`;
+    return new EventSource(url);
+  }
   /**
    * Items API Methods
    */

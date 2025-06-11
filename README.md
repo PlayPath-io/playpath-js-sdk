@@ -14,27 +14,16 @@ A JavaScript library for interacting with the PlayPath RAG (Retrieval-Augmented 
 
 ## Installation
 
-### Browser (CDN)
-
-```html
-<script src="path/to/playpath-sdk.js"></script>
-<script>
-  const sdk = new PlayPathSDK({
-    baseUrl: 'https://playpath.io',
-    apiKey: 'your-api-key'
-  });
-</script>
-```
-
-### Node.js
+### npm
 
 ```bash
-# Copy the SDK files to your project
-cp -r js-sdk/ ./playpath-sdk/
+npm install playpath-sdk
 ```
 
+### Node.js (CommonJS)
+
 ```javascript
-const { PlayPathSDK } = require('./playpath-sdk/playpath-sdk.js');
+const { PlayPathSDK } = require('playpath-sdk');
 
 const sdk = new PlayPathSDK({
   baseUrl: 'https://playpath.io',
@@ -45,12 +34,24 @@ const sdk = new PlayPathSDK({
 ### ES Modules
 
 ```javascript
-import { PlayPathSDK } from './playpath-sdk.js';
+import { PlayPathSDK } from 'playpath-sdk';
 
 const sdk = new PlayPathSDK({
   baseUrl: 'https://playpath.io',
   apiKey: 'your-api-key'
 });
+```
+
+### Browser (CDN)
+
+```html
+<script src="https://unpkg.com/playpath-sdk@latest/playpath-sdk.js"></script>
+<script>
+  const sdk = new PlayPathSDK({
+    baseUrl: 'https://playpath.io',
+    apiKey: 'your-api-key'
+  });
+</script>
 ```
 
 ## Quick Start
@@ -127,6 +128,23 @@ const sdk = new PlayPathSDK(config)
 ### RAG API
 
 #### `ragChat(params)`
+
+#### `ragChatStream(params)`
+Stream chat messages via Server-Sent Events (SSE). Returns an EventSource instance.
+
+```javascript
+const eventSource = sdk.ragChatStream({
+  message: "Your question here",
+  history: [...],         // Optional chat history
+  system_prompt: "Custom system prompt"  // Optional system prompt
+});
+eventSource.onmessage = (event) => {
+  console.log(event.data);
+};
+eventSource.onerror = (err) => {
+  console.error("Stream error:", err);
+};
+```
 
 Send a message to the RAG chat assistant.
 
@@ -346,7 +364,7 @@ function extractTags(content) {
 The SDK includes full TypeScript definitions:
 
 ```typescript
-import { PlayPathSDK, RagChatParams, Item } from './playpath-sdk';
+import { PlayPathSDK, RagChatParams, Item } from 'playpath-sdk';
 
 const sdk = new PlayPathSDK({
   baseUrl: 'https://your-instance.com',

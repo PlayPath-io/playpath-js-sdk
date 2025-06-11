@@ -76,6 +76,11 @@ export class PlayPathSDK {
 
   // RAG API Methods
   ragChat(params: RagChatParams): Promise<RagChatResponse>;
+  /**
+   * Stream chat messages via Server-Sent Events (SSE)
+   * @param params Chat parameters including message and optional history and system prompt
+   */
+  ragChatStream(params: RagChatParams): EventSource;
 
   // Items API Methods
   getItems(): Promise<Item[]>;

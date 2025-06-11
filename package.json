@@ -1,6 +1,6 @@
 {
   "name": "playpath-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JavaScript SDK for interacting with PlayPath RAG and Items APIs",
   "main": "playpath-sdk.js",
   "types": "playpath-sdk.d.ts",

@@ -5,7 +5,8 @@
   "main": "playpath-sdk.js",
   "types": "playpath-sdk.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/test.js",
+    "prepublishOnly": "npm test"
   },
   "keywords": [
     "playpath",
@@ -21,7 +22,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-org/playpath"
+    "url": "https://github.com/playpath/playpath-js-sdk"
   },
   "engines": {
     "node": ">=14.0.0"
